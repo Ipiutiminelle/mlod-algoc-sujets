@@ -24,13 +24,7 @@ return f;
 };
 
 
-/*
-void EcritureFichier(char NomFichier[],int DonneesTexte){
-	FILE* f;
-f = fopen(NomFichier,"a");
-fputc(DonneesTexte,NomFichier);
-};
-*/
+
 int numberOfWinners(FILE* f){
 	int caractere;
 	int count = 1;
@@ -43,3 +37,23 @@ int numberOfWinners(FILE* f){
   	}
 	return count;
 }
+
+char *readStringFromFileUntil(FILE *f, char lecteur){
+	int caractere;
+	char result = (char) malloc(2048*sizeof(char));
+	int i = 0;
+	while ((caractere = fgetc(f)) != EOF) {
+    if (caractere==lecteur)
+		{
+			return result;
+		}
+		result[i]=caractere;
+		i++;
+  }
+};
+
+void readWinners(FILE *f, Gagnant *Gagnant){
+	fscanf(f, "%i", &ligne->annee);
+	ligne->nom=readStringFromFileUntil(f, ';');
+	ligne->travaux=readStringFromFileUntil(f, ';');
+};
