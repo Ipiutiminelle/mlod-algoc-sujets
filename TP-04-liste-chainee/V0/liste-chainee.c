@@ -106,8 +106,8 @@ Liste ajoutFin_r(Element v, Liste l) {
 		return l;
 	}
 	l=creer(v);
-		return l;
-	;
+	return l;
+	
 }
 
 // compare deux elements
@@ -129,7 +129,17 @@ Liste cherche_i(Element v,Liste l) {
 
 // version récursive
 Liste cherche_r(Element v,Liste l) {
-	return TODO;
+	
+	if(!estVide(l)){
+		if(equalsElement(l->val,v)){
+			return l;
+		}
+		return cherche_r(v , l->suiv);
+	}
+	else{
+		return NULL;
+	}
+
 }
 
 // Retourne la liste modifiée dans la laquelle le premier élément ayant la valeur v a été supprimé
