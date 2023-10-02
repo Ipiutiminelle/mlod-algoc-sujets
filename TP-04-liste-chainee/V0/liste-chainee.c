@@ -100,7 +100,7 @@ Liste ajoutFin_i(Element v, Liste l) {
 
 // version recursive
 Liste ajoutFin_r(Element v, Liste l) {
-	if (!estvide(l))
+	if (!estVide(l))
 	{
 		l=creer(v);
 		return l;
