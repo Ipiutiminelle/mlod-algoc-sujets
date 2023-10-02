@@ -8,6 +8,8 @@
 int main(void){
 	Liste l, p;
 
+
+
 	l = NULL;
 	printf("estVide(l) = %s\n",estVide(l)?"TRUE":"FALSE");
 
@@ -78,6 +80,8 @@ int main(void){
 	afficheListe_r(l);
 
 	detruire_r(l);
+
+
 
 	return EXIT_SUCCESS;
 }
