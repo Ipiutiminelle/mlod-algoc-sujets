@@ -102,9 +102,11 @@ Liste ajoutFin_i(Element v, Liste l) {
 Liste ajoutFin_r(Element v, Liste l) {
 	if (!estVide(l))
 	{
-		l=creer(v);
+		l->suiv=ajoutFin_r(v,l->suiv);
 		return l;
 	}
+	l=creer(v);
+		return l;
 	;
 }
 
