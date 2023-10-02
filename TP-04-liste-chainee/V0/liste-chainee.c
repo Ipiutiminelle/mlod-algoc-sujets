@@ -19,15 +19,16 @@ Liste creer(Element v){
 
 // ajoute l'élément v en tete de la liste l
 Liste ajoutTete(Element v, Liste l) {
-	Cellule* c=(Cellule*)malloc(sizeof(Cellule));
-	c->val=v;
-	c->suiv=l;
-	return c;
+	Liste p = creer(v);
+	p->suiv = l;
+	return p;
+
 }
 
 
 void afficheElement(Element e) {
-	printf("%i ",e);
+	printf("%i",e);
+	printf("\n");
 }
 
 // affiche tous les éléments de la liste l
@@ -42,14 +43,16 @@ void afficheListe_i(Liste l) {
 		p=p->suiv;
 	
 	};
+	printf("\n");
 }
 
 // version recursive
 void afficheListe_r(Liste l) {
-	while(!estvide(l)){
+	while(!estVide(l)){
 		afficheElement(l->val);
 		afficheListe_r(l->suiv);
 	}
+	printf("\n");
 }
 
 void detruireElement(Element e) {}
@@ -57,31 +60,52 @@ void detruireElement(Element e) {}
 // Détruit tous les éléments de la liste l
 // version itérative
 void detruire_i(Liste l) {
-	Liste p=l;
-	while(!estVide(p)){
-		detruireElement(p->val);
-		p=p->suiv;
+	Liste suivant, courant =l;
+	while(!estVide(courant)){
+		suivant = courant -> suiv;
+		detruireElement(courant->val);
+		free(courant);
+		courant =suivant ;
 	
 	};
 }
 
 // version récursive
 void detruire_r(Liste l) {
-	while(!estvide(l)){
-		detruireElement(l->val);
+	if(!estVide(l)){
 		detruire_r(l->suiv);
+		detruireElement(l->val);
+		free(l);
 	}
 }
 
 // retourne la liste dans laquelle l'élément v a été ajouté en fin
 // version itérative
 Liste ajoutFin_i(Element v, Liste l) {
-	return TODO;
+	
+	Liste p=l;
+
+	if(estVide(p)){
+		return p;
+	}
+	
+	while(!estVide(p->suiv)){
+		p = p->suiv ;
+	};
+	
+	p->suiv=creer(v);
+	
+
 }
 
 // version recursive
 Liste ajoutFin_r(Element v, Liste l) {
-	return TODO;
+	if (!estvide(l))
+	{
+		l=creer(v);
+		return l;
+	}
+	;
 }
 
 // compare deux elements
@@ -92,7 +116,13 @@ bool equalsElement(Element e1, Element e2){
 // Retourne un pointeur sur l'élément de la liste l contenant la valeur v ou NULL
 // version itérative
 Liste cherche_i(Element v,Liste l) {
-	return TODO;
+	Liste p=l;
+
+	while (!estVide(p) && !equalsElement(p->val,v))
+	{
+		p=p->suiv;
+	}
+	return p;
 }
 
 // version récursive

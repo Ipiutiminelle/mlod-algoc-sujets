@@ -25,10 +25,10 @@ int main(void){
 
 	afficheListe_i(l);
 
-	ajoutFin_r(99,l);
+	ajoutFin_i(99,l);
 	afficheListe_i(l);
 
-	ajoutFin_r(100,l);
+	ajoutFin_i(100,l);
 	afficheListe_i(l);
 
 	p = cherche_i(200,l);
